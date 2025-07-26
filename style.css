@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    background-color: #F5F5F5;
+}
+
+ul {
+    display: flex;
+    justify-self: center;
+    column-gap: 20px;
+}
+
+li {
+    list-style: none;
+}
