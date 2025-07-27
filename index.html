@@ -7,7 +7,6 @@
   <meta name="theme-color" content="#000000">
   <title>Fitplan</title>
   <link rel="stylesheet" href="style.css">
-  <script type="text/javascript" src="script.js"></script>
 </head>
 
 <body>
@@ -26,7 +25,7 @@
     <p>目標を入力して、筋トレ&食事のプランを自動で提案します</p>
     <button class="start-button">はじめる</button>
   </section>
-  <section id="input-information-screen-1">
+  <section id="input-information-screen-1" style="display: none;">
     <h2>情報を入力してください</h2>
     <div class="user-information">
       <form class="form">
@@ -44,19 +43,19 @@
         </select>
       </form>
     </div>
-    <button class="start-button">代謝を測定する</button>
+    <button class="measurement-button">代謝を測定する</button>
   </section>
-  <section id="input-information-screen-2">
+  <section id="input-information-screen-2" style="display: none;">
     <h2>目標を設定しましょう</h2>
     <form class="form">
       <label>目標体重<input type="number" id="target-weight" required></label>
       <label>達成までの日数<input type="number" id="target-date"></label>
       <label>週の運動可能回数<input type="number" id="possible-active-date" required></label>
     </form>
-    <button class="start-button">目標プランを作成する</button>
+    <button class="create-button">目標プランを作成する</button>
   </section>
-
-
+  
+  <script type="module" src="./src/script.js"></script>
 </body>
 
 </html>
