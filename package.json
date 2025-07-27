@@ -1,10 +1,10 @@
 {
   "name": "ryosuke-nanaumi.fnd38",
   "version": "1.0.0",
-  "type": "commonjs",
+  "type": "module",
   "main": "script.js",
   "scripts": {
-    "test": "jest"
+    "test": "vitest"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,6 @@
   "homepage": "https://github.com/Ryosuke-Nanaumi/Ryosuke-Nanaumi.fnd38#readme",
   "description": "",
   "devDependencies": {
-    "jest": "^30.0.5"
+    "vitest": "^3.2.4"
   }
 }
