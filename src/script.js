@@ -22,7 +22,7 @@ export function setupScreenToggle() {
 
     startBtn?.addEventListener("click", () => {
         startDisplay.style.display = "none";
-        inputInformationScreen1.style.display = "block";
+        inputInformationScreen1.style.display = "flex";
     });
 
     measurementBtn?.addEventListener("click", () => {
