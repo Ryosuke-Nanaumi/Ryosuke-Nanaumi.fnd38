@@ -28,11 +28,11 @@
   <section id="input-information-screen-1" style="display: none;">
     <h2>情報を入力してください</h2>
     <div class="user-information">
-      <form class="form">
+      <form class="information-form-1" id="informationForm1">
         <label>年齢<input type="number" id="age" required></label>
         <label>体重<input type="number" id="weight" required></label>
         <label>身長<input type="number" id="height" required></label>
-        <select class="sex-select">
+        <select cla ss="sex-select">
           <option value="male">男性</option>
           <option value="female">女性</option>
         </select>
@@ -47,7 +47,7 @@
   </section>
   <section id="input-information-screen-2" style="display: none;">
     <h2>目標を設定しましょう</h2>
-    <form class="form">
+    <form class="user-information-form-2" id="informationForm2">
       <label>目標体重<input type="number" id="target-weight" required></label>
       <label>達成までの日数<input type="number" id="target-date"></label>
       <label>週の運動可能回数<input type="number" id="possible-active-date" required></label>
