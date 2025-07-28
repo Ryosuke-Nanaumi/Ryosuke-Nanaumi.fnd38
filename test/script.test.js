@@ -39,12 +39,23 @@
 }
 
 // @vitest-environment jsdom
-import { describe, it, beforeEach, expect } from "vitest";
+import { describe, it, beforeEach, expect, vi } from "vitest";
 import { setupScreenToggle } from "../src/script";
+import * as calculation from "../src/calculation";
+
+vi.mock("../src/calculation", () => ({
+  calculateMetabolism: vi.fn(() => 1234),
+}))
 
 const initialHTML = `
 <section id="start-screen"><button class="start-button">はじめる</button></section>
-<section id="input-information-screen-1" style="display: none;"><button class="measurement-button">はじめる</button></section>
+<section id="input-information-screen-1" style="display: none;"><button class="measurement-button">はじめる</button>
+  <input type="number" id="age" value="25" />
+  <input type="number" id="weight" value="70" />
+  <input type="number" id="height" value="170" />
+  <select id="sexSelect"><option value="male" selected>男性</option></select>
+  <button class="measurement-button">はじめる</button>
+</section>
 <section id="input-information-screen-2" style="display: none;"></section>
 `
 describe("screenSwitch", () => {
@@ -64,12 +75,16 @@ describe("screenSwitch", () => {
     expect(document.getElementById("input-information-screen-1").style.display).not.toBe("none");
     expect(document.getElementById("input-information-screen-2").style.display).toBe("none");
   });
-  
-  it("show input-information-screen-2 when measurement-button clicked", () => {
+
+  it("show result when measurement-button clicked", () => {
     document.querySelector(".start-button").click();
     document.querySelector(".measurement-button").click();
     expect(document.getElementById("start-screen").style.display).toBe("none");
-    expect(document.getElementById("input-information-screen-1").style.display).toBe("none");
-    expect(document.getElementById("input-information-screen-2").style.display).not.toBe("none");
+    expect(document.getElementById("input-information-screen-1").style.display).not.toBe("none");
+    expect(document.getElementById("input-information-screen-2").style.display).toBe("none");
+
+    const result = document.querySelector("#metabolismResult").textContent;
+    expect(result).not.toBeNull();
+    expect(result).toBe("1234");
   });
 });

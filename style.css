@@ -1,7 +1,7 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 header {
@@ -20,4 +20,104 @@ ul {
 
 li {
     list-style: none;
+}
+
+#start-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.start-button {
+    display: inline-block;
+    background-color: #42F099;
+    border-radius: 24px;
+    border-style: none;
+    padding: 10px 30px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.start-button:hover {
+    background-color: #11d070;
+}
+
+.start-button:active {
+    background-color: #2fb67b;
+    box-shadow: rgba(0, 0, 0, 0.2);
+}
+
+#input-information-screen-1 {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 35px;
+    gap: 20px;
+}
+
+#input-information-screen-1 h2 {
+    font-size: 36px;
+}
+
+#metabolism-info p {
+    font-size: 15px;
+}
+
+.measure-metabolic-container {
+    width: 80%;
+    align-self: center;
+}
+
+/* 2ページ目 */
+.information-form-1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.age-label {
+    font-size: 15px;
+    max-width: 120px;
+}
+.weight-label {
+    font-size: 15px;
+    max-width: 120px;
+}
+.height-label {
+    font-size: 15px;
+    max-width: 120px;
+}
+
+
+.label-header {
+    display: flex;
+    align-items: center;
+}
+
+.form-label-required {
+    border-radius: 6px;
+    margin-right: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    width: 36px;
+    display: inline-block;
+    text-align: center;
+    background: #ff6c6c;
+    color: #fff;
+    font-size: 10px;
+}
+
+.form-item-input {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 30px;
+    /* flex: 1; */
+    width: 100%;
+    max-width: 100px;
+    font-size: 18px;
 }

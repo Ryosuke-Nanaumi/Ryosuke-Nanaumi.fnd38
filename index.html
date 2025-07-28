@@ -20,30 +20,57 @@
       </ul>
     </div>
   </header>
-  <section id="start-screen">
-    <h2>まずは、代謝を計算してみましょう。</h2>
-    <p>目標を入力して、筋トレ&食事のプランを自動で提案します</p>
+  <section id="start-screen" style="display: none;">
+    <h2>目標を入力して、筋トレ&食事のプランを自動で提案します</h2>
     <button class="start-button">はじめる</button>
   </section>
-  <section id="input-information-screen-1" style="display: none;">
-    <h2>情報を入力してください</h2>
-    <div class="user-information">
-      <form class="information-form-1" id="informationForm1">
-        <label>年齢<input type="number" id="age" required></label>
-        <label>体重<input type="number" id="weight" required></label>
-        <label>身長<input type="number" id="height" required></label>
-        <select cla ss="sex-select">
-          <option value="male">男性</option>
-          <option value="female">女性</option>
-        </select>
-        <select class="active-level">
-          <option value="high">たかい</option>
-          <option value="middle">ふつう</option>
-          <option value="low">ひくい</option>
-        </select>
-      </form>
+  <section id="input-information-screen-1">
+    <h2>代謝を測定しよう</h2>
+    <div class="measure-metabolic-container">
+      <div id="metabolism-info">
+        <p>
+          <strong>基礎代謝</strong>とは、「何もしていなくても生命維持のために消費されるエネルギー」です。<br>
+          年齢・身長・体重・性別などから計算され、ダイエットや筋トレの計画を立てるうえでの重要な指標となります。
+        </p>
+      </div>
+      <br>
+      <div class="user-information">
+        <form class="information-form-1" id="informationForm1">
+          <label class="age-label">
+            <div class="label-header">
+              <span class="form-label-required">必須</span>
+              <span>年齢(歳)</span>
+            </div>
+            <input type="number" class="form-item-input" id="age" required>
+          </label>
+          <label class="weight-label">
+            <div class="label-header">
+              <span class="form-label-required">必須</span>
+              <span>体重(kg)</span>
+            </div>
+            <input type="number" class="form-item-input" id="weight" required>
+          </label>
+          <label class="height-label">
+            <div class="label-header">
+              <span class="form-label-required">必須</span>
+              <span>身長(cm)</span>
+            </div>
+            <input type="number" class="form-item-input" id="height" required>
+          </label>
+          <label class="sex-label">
+            <div class="label-header">
+              <span class="form-label-required">必須</span>
+              <span>性別</span>
+            </div>
+            <select class="sex-select" id="sexSelect">
+              <option value="male">男性</option>
+              <option value="female">女性</option>
+            </select>
+          </label>
+        </form>
+      </div>
+      <button class="measurement-button">代謝を測定する</button>
     </div>
-    <button class="measurement-button">代謝を測定する</button>
   </section>
   <section id="input-information-screen-2" style="display: none;">
     <h2>目標を設定しましょう</h2>
@@ -54,7 +81,7 @@
     </form>
     <button class="create-button">目標プランを作成する</button>
   </section>
-  
+
   <script type="module" src="./src/script.js"></script>
 </body>
 
