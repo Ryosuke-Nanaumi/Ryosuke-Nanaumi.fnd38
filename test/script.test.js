@@ -54,7 +54,9 @@ const initialHTML = `
   <input type="number" id="weight" value="70" />
   <input type="number" id="height" value="170" />
   <select id="sexSelect"><option value="male" selected>男性</option></select>
-  <button class="measurement-button">はじめる</button>
+  <div id="metabolismResultBox">
+  <div id="metabolismResult"></div>
+</div>
 </section>
 <section id="input-information-screen-2" style="display: none;"></section>
 `
@@ -78,6 +80,15 @@ describe("screenSwitch", () => {
 
   it("show result when measurement-button clicked", () => {
     document.querySelector(".start-button").click();
+
+    expect(document.querySelector(".measurement-button").disabled).toBe(true);
+
+    ["age", "weight", "height"].forEach(id => {
+      document.getElementById(id).dispatchEvent(new Event("input"));
+    });
+    document.getElementById("sexSelect").dispatchEvent(new Event("change"));
+
+    expect(document.querySelector(".measurement-button").disabled).toBe(false);
     document.querySelector(".measurement-button").click();
     expect(document.getElementById("start-screen").style.display).toBe("none");
     expect(document.getElementById("input-information-screen-1").style.display).not.toBe("none");

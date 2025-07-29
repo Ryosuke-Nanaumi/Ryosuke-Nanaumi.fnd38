@@ -16,13 +16,24 @@ export function setupScreenToggle() {
     const inputInformationScreen1 = document.getElementById("input-information-screen-1");
     const inputInformationScreen2 = document.getElementById("input-information-screen-2");
 
-    const resultElement = document.createElement("div");
-    resultElement.id = "metabolismResult";
-    inputInformationScreen1.appendChild(resultElement);
+    const ageInput = document.querySelector("#age")
+    const weightInput = document.querySelector("#weight")
+    const heightInput = document.querySelector("#height")
+    const sexSelectInput = document.querySelector("#sexSelect")
 
+    // 表示されていないからnull
+    
+    
+    measurementBtn.disabled = true;
+    
     startBtn?.addEventListener("click", () => {
         startDisplay.style.display = "none";
         inputInformationScreen1.style.display = "flex";
+    });
+
+    [ageInput, weightInput, heightInput, sexSelectInput].forEach(input => {
+        input.addEventListener("input", checkInputs);
+        input.addEventListener("change", checkInputs);
     });
 
     measurementBtn?.addEventListener("click", () => {
@@ -34,17 +45,26 @@ export function setupScreenToggle() {
         }
 
         try {
+            const div = document.querySelector("#metabolismResult");
             validateUserProfile(userProfile);
             const result = calculateMetabolism(userProfile);
-            resultElement.textContent = result;
+            div.textContent = `${result} kcal`;
         } catch (e) {
             alert(e.message);
         }
     });
+
+    function checkInputs() {
+        const isFilled = (
+            ageInput.value.trim() !== "" &&
+            weightInput.value.trim() !== "" &&
+            heightInput.value.trim() !== "" &&
+            sexSelectInput.value.trim() !== ""
+        );
+        measurementBtn.disabled = !isFilled;
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     setupScreenToggle();
 });
-
-// setupScreenToggle();

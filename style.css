@@ -162,12 +162,12 @@ li {
     padding: 10px 30px;
     font-size: 1em;
     font-weight: bold;
-    cursor: pointer;
     transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
-.measurement-button:hover {
+.measurement-button:hover:not(:disabled) {
     background-color: #11d070;
+    cursor: pointer;
 }
 
 .mea:active {
