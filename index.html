@@ -20,7 +20,7 @@
       </ul>
     </div>
   </header>
-  <section id="start-screen">
+  <section id="start-screen" style="display: none;">
     <h2>目標を入力して、筋トレ&食事のプランを自動で提案します</h2>
     <button class="start-button">はじめる</button>
   </section>
@@ -71,7 +71,10 @@
               </label>
             </form>
           </div>
-          <button class="measurement-button">代謝を測定する</button>
+          <div class="button-container">
+            <button class="measurement-button">代謝を測定する</button>
+            <button class="next-button" id="nextButton" style="display: none;">食事・運動プランを見る</button>
+          </div>
         </div>
         <div id="metabolismResultBox" class="result-box">
           <h3>あなたの基礎代謝</h3>
@@ -81,7 +84,7 @@
       </div>
     </div>
   </section>
-  <section id="input-information-screen-2" style="display: none;">
+  <section id="input-information-screen-2">
     <h2>目標を設定しましょう</h2>
     <form class="user-information-form-2" id="informationForm2">
       <label>目標体重<input type="number" id="target-weight" required></label>

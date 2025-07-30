@@ -13,3 +13,7 @@ export function calculateMetabolism(userProfile) {
     ) * 1000 / 4.186;
     return parseFloat(result.toFixed(1));
 }
+
+export function calculateTarget() {
+    
+}

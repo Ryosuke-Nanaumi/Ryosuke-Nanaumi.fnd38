@@ -12,6 +12,7 @@ export function setupScreenToggle() {
     const startBtn = document.querySelector(".start-button");
     console.log(startBtn);
     const measurementBtn = document.querySelector(".measurement-button");
+    const nextButton = document.querySelector("#nextButton");
     const startDisplay = document.querySelector("#start-screen");
     const inputInformationScreen1 = document.getElementById("input-information-screen-1");
     const inputInformationScreen2 = document.getElementById("input-information-screen-2");
@@ -49,10 +50,16 @@ export function setupScreenToggle() {
             validateUserProfile(userProfile);
             const result = calculateMetabolism(userProfile);
             div.textContent = `${result} kcal`;
+            document.querySelector("#nextButton").style.display = "block";
         } catch (e) {
             alert(e.message);
         }
     });
+
+    nextButton?.addEventListener("click", () => {
+        inputInformationScreen1.style.display = "none";
+        inputInformationScreen2.style.display = "flex";
+    })
 
     function checkInputs() {
         const isFilled = (

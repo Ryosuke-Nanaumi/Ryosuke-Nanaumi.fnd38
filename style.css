@@ -170,14 +170,43 @@ li {
     cursor: pointer;
 }
 
-.mea:active {
+.measurement-button:active:not(:disabled) {
     background-color: #2fb67b;
+    box-shadow: rgba(0, 0, 0, 0.2);
+}
+
+.next-button {
+    margin-top: 50px;
+    display: inline-block;
+    background-color: #00c3ff;
+    border-radius: 24px;
+    border-style: none;
+    padding: 10px 30px;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.next-button:hover:not(:disabled) {
+    background-color: #1c9fd0;
+    cursor: pointer;
+}
+
+.next-button:active:not(:disabled) {
+    background-color: #227da2;
     box-shadow: rgba(0, 0, 0, 0.2);
 }
 
 .user-information-button-container  {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+}
+
+.button-conatiner {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .user-information-result-conainer {

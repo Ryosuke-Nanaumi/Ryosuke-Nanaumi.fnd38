@@ -50,6 +50,7 @@ vi.mock("../src/calculation", () => ({
 const initialHTML = `
 <section id="start-screen"><button class="start-button">はじめる</button></section>
 <section id="input-information-screen-1" style="display: none;"><button class="measurement-button">はじめる</button>
+<button id="nextButton" style="display: none;">はじめる</button>
   <input type="number" id="age" value="25" />
   <input type="number" id="weight" value="70" />
   <input type="number" id="height" value="170" />
@@ -78,7 +79,7 @@ describe("screenSwitch", () => {
     expect(document.getElementById("input-information-screen-2").style.display).toBe("none");
   });
 
-  it("show result when measurement-button clicked", () => {
+  it("show result and nextButton when measurement-button clicked", () => {
     document.querySelector(".start-button").click();
 
     expect(document.querySelector(".measurement-button").disabled).toBe(true);
@@ -92,10 +93,27 @@ describe("screenSwitch", () => {
     document.querySelector(".measurement-button").click();
     expect(document.getElementById("start-screen").style.display).toBe("none");
     expect(document.getElementById("input-information-screen-1").style.display).not.toBe("none");
+    expect(document.getElementById("nextButton").style.display).not.toBe("none");
     expect(document.getElementById("input-information-screen-2").style.display).toBe("none");
 
     const result = document.querySelector("#metabolismResult").textContent;
     expect(result).not.toBeNull();
-    expect(result).toBe("1234");
+    expect(result).toBe("1234 kcal");
+  });
+  
+  it("show input-information-screen-2 when nextButton tapped", () => {
+    document.querySelector(".start-button").click();
+
+    ["age", "weight", "height"].forEach(id => {
+      document.getElementById(id).dispatchEvent(new Event("input"));
+    });
+    document.getElementById("sexSelect").dispatchEvent(new Event("change"));
+
+    document.querySelector(".measurement-button").click();
+    document.querySelector("#nextButton").click();
+
+
+    expect(document.getElementById("input-information-screen-1").style.display).toBe("none");
+    expect(document.getElementById("input-information-screen-2").style.display).not.toBe("none");
   });
 });
