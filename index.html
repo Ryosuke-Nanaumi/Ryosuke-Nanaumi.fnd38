@@ -20,7 +20,7 @@
       </ul>
     </div>
   </header>
-  <section id="start-screen" style="display: none;">
+  <section id="start-screen">
     <h2>目標を入力して、筋トレ&食事のプランを自動で提案します</h2>
     <button class="start-button">はじめる</button>
   </section>
@@ -69,6 +69,18 @@
                   <option value="female">女性</option>
                 </select>
               </label>
+              <label class="activity-label">
+                <div class="label-header">
+                  <span class="form-label-required">必須</span>
+                  <span>活動レベル</span>
+                </div>
+                <select class="form-item-select" id="activitySelect">
+                  <option value="">選択してください</option>
+                  <option value="low">低い(運動しない)</option>
+                  <option value="middle">普通(少し運動する)</option>
+                  <option value="high">高い(運動する)</option>
+                </select>
+              </label>
             </form>
           </div>
           <div class="button-container">
@@ -77,21 +89,21 @@
           </div>
         </div>
         <div id="metabolismResultBox" class="result-box">
-          <h3>あなたの基礎代謝</h3>
+          <h3>あなたの基礎代謝</h3> 
           <p id="metabolismResultText">ここに結果が表示されます</p>
           <div id="metabolismResult"></div>
         </div>
       </div>
     </div>
   </section>
-  <section id="input-information-screen-2">
+  <section id="input-information-screen-2" style="display: none;">
     <h2>目標を設定しましょう</h2>
     <form class="user-information-form-2" id="informationForm2">
-      <label>目標体重<input type="number" id="target-weight" required></label>
-      <label>達成までの日数<input type="number" id="target-date"></label>
-      <label>週の運動可能回数<input type="number" id="possible-active-date" required></label>
+      <label>目標体重<input type="number" id="targetWeight" required></label>
+      <label>達成までの日数<input type="number" id="targetDate"></label>
+      <label>週の運動可能回数<input type="number" id="possibleActiveDate" required></label>
     </form>
-    <button class="create-button">目標プランを作成する</button>
+    <button class="create-button" id="createButton">目標プランを作成する</button>
   </section>
 
   <script type="module" src="./src/script.js"></script>

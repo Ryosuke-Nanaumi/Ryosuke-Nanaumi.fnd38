@@ -9,10 +9,10 @@ const MAX_HEIGHT = 250;
 
 /** 
  * 入力値が有効かどうか確認し、無効ならエラーを例外を投げる
- *@param {Object} userProfile - { age, weight, height, sex }
+ *@param {Object} userProfile - { age, weight, height, sex, activityLevel }
  */
 export function validateUserProfile(userProfile) {
-    const { age, weight, height, sex } = userProfile;
+    const { age, weight, height, sex, activityLevel } = userProfile;
 
     if (!Number.isFinite(age) || age <= MIN_AGE || age > MAX_AGE) {
         throw new Error("正しい年齢を入力してください。");
@@ -26,4 +26,13 @@ export function validateUserProfile(userProfile) {
     if (sex !== "male" && sex !== "female") {
         throw new Error("正しい性別を入力してください。");
     }
+    if (activityLevel !== "low" && activityLevel !== "middle" && activityLevel !== "high") {
+        throw new Error("正しい活動レベルを入力してください。");
+    }
 }
+
+/**
+ * 目標値設定の入力値が有効かどうか確認し、無効なら例外を投げる
+ * @param {Object} target - {targetWeight, targetDate, possibleActiveDate}
+ *  */
+export function validateTarget(target) {}

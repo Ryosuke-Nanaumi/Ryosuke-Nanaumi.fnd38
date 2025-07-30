@@ -1,3 +1,4 @@
+
 // testのテンプレート
 {
   // import { describe, it, expect, beforeAll, afterAll } from 'vitest';
@@ -42,28 +43,15 @@
 import { describe, it, beforeEach, expect, vi } from "vitest";
 import { setupScreenToggle } from "../src/script";
 import * as calculation from "../src/calculation";
+import { fullScreenFlowHTML } from "../__test__/fixtures/initialHTML"
 
 vi.mock("../src/calculation", () => ({
   calculateMetabolism: vi.fn(() => 1234),
 }))
 
-const initialHTML = `
-<section id="start-screen"><button class="start-button">はじめる</button></section>
-<section id="input-information-screen-1" style="display: none;"><button class="measurement-button">はじめる</button>
-<button id="nextButton" style="display: none;">はじめる</button>
-  <input type="number" id="age" value="25" />
-  <input type="number" id="weight" value="70" />
-  <input type="number" id="height" value="170" />
-  <select id="sexSelect"><option value="male" selected>男性</option></select>
-  <div id="metabolismResultBox">
-  <div id="metabolismResult"></div>
-</div>
-</section>
-<section id="input-information-screen-2" style="display: none;"></section>
-`
 describe("screenSwitch", () => {
   beforeEach(() => {
-    document.body.innerHTML = initialHTML;
+    document.body.innerHTML = fullScreenFlowHTML;
     setupScreenToggle();
   });
   it("shows only the start-screen initially", () => {
@@ -88,6 +76,7 @@ describe("screenSwitch", () => {
       document.getElementById(id).dispatchEvent(new Event("input"));
     });
     document.getElementById("sexSelect").dispatchEvent(new Event("change"));
+    document.getElementById("activitySelect").dispatchEvent(new Event("change"));
 
     expect(document.querySelector(".measurement-button").disabled).toBe(false);
     document.querySelector(".measurement-button").click();

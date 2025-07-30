@@ -3,6 +3,7 @@
 
 import { calculateMetabolism } from "./calculation.js";
 import { validateUserProfile } from "./validation.js";
+import { setupInputScreen2 } from "./screenInput2.js";
 // test sample
 export function add(a, b) {
     return a + b;
@@ -21,6 +22,7 @@ export function setupScreenToggle() {
     const weightInput = document.querySelector("#weight")
     const heightInput = document.querySelector("#height")
     const sexSelectInput = document.querySelector("#sexSelect")
+    const activitySelectInput = document.querySelector("#activitySelect")
 
     // 表示されていないからnull
     
@@ -32,7 +34,7 @@ export function setupScreenToggle() {
         inputInformationScreen1.style.display = "flex";
     });
 
-    [ageInput, weightInput, heightInput, sexSelectInput].forEach(input => {
+    [ageInput, weightInput, heightInput, sexSelectInput, activitySelectInput].forEach(input => {
         input.addEventListener("input", checkInputs);
         input.addEventListener("change", checkInputs);
     });
@@ -42,7 +44,8 @@ export function setupScreenToggle() {
             age: parseInt(document.querySelector("#age").value),
             weight: parseFloat(document.querySelector("#weight").value),
             height: parseFloat(document.querySelector("#height").value),
-            sex: document.querySelector("#sexSelect").value
+            sex: document.querySelector("#sexSelect").value,
+            activityLevel: document.querySelector("#activitySelect").value,
         }
 
         try {
@@ -66,7 +69,8 @@ export function setupScreenToggle() {
             ageInput.value.trim() !== "" &&
             weightInput.value.trim() !== "" &&
             heightInput.value.trim() !== "" &&
-            sexSelectInput.value.trim() !== ""
+            sexSelectInput.value.trim() !== "" &&
+            activitySelectInput.value.trim() !== ""
         );
         measurementBtn.disabled = !isFilled;
     }
@@ -74,4 +78,5 @@ export function setupScreenToggle() {
 
 document.addEventListener('DOMContentLoaded', () => {
     setupScreenToggle();
+    setupInputScreen2();
 });
