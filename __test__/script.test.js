@@ -42,11 +42,11 @@
 // @vitest-environment jsdom
 import { describe, it, beforeEach, expect, vi } from "vitest";
 import { setupScreenToggle } from "../src/script";
-import * as calculation from "../src/calculation";
 import { fullScreenFlowHTML } from "../__test__/fixtures/initialHTML"
 
 vi.mock("../src/calculation", () => ({
   calculateMetabolism: vi.fn(() => 1234),
+  calculateTdee: vi.fn(() => 2000),
 }))
 
 describe("screenSwitch", () => {
@@ -85,9 +85,13 @@ describe("screenSwitch", () => {
     expect(document.getElementById("nextButton").style.display).not.toBe("none");
     expect(document.getElementById("input-information-screen-2").style.display).toBe("none");
 
-    const result = document.querySelector("#metabolismResult").textContent;
-    expect(result).not.toBeNull();
-    expect(result).toBe("1234 kcal");
+    const bmrResult = document.querySelector("#metabolismResult").textContent;
+    expect(bmrResult).not.toBeNull();
+    expect(bmrResult).toBe("あなたの基礎代謝は1234kcalです。");
+    
+    const tdeeResult = document.querySelector("#tdeeResult").textContent;
+    expect(tdeeResult).not.toBeNull();
+    expect(tdeeResult).toBe("あなたの総消費カロリーは2000kcalです。");
   });
   
   it("show input-information-screen-2 when nextButton tapped", () => {

@@ -1,9 +1,10 @@
 'use strict'
 // 1行目に記載している 'use strict' は削除しないでください
 
-import { calculateMetabolism } from "./calculation.js";
+import { calculateMetabolism, calculateTdee } from "./calculation.js";
 import { validateUserProfile } from "./validation.js";
 import { setupInputScreen2 } from "./screenInput2.js";
+import { sharedState } from "./sharedState.js";
 // test sample
 export function add(a, b) {
     return a + b;
@@ -49,10 +50,17 @@ export function setupScreenToggle() {
         }
 
         try {
-            const div = document.querySelector("#metabolismResult");
+            const divBmr = document.querySelector("#metabolismResult");
+            const divTdee = document.querySelector("#tdeeResult");
             validateUserProfile(userProfile);
-            const result = calculateMetabolism(userProfile);
-            div.textContent = `${result} kcal`;
+            sharedState.userProfile = userProfile;
+            const bmr = calculateMetabolism(userProfile);
+            divBmr.textContent = `あなたの基礎代謝は${bmr}kcalです。`;
+            sharedState.bmr = bmr;
+            const tdee = calculateTdee(bmr, userProfile.activityLevel);
+            divTdee.textContent = `あなたの総消費カロリーは${tdee}kcalです。`;
+
+            sharedState.tdee = tdee;
             document.querySelector("#nextButton").style.display = "block";
         } catch (e) {
             alert(e.message);

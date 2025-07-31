@@ -9,7 +9,8 @@ export const fullScreenFlowHTML = `
   <select id="activitySelect"><option value="high" selected>高い</option></select>
   <div id="metabolismResultBox">
   <div id="metabolismResult"></div>
-</div>
+  <div id="tdeeResult"></div>
+  </div>
 </section>
 <section id="input-information-screen-2" style="display: none;"></section>
 `
