@@ -35,8 +35,18 @@ export function setupInputScreen2() {
 
             const targetCalorieIntake = calculateTarget(sharedState.tdee, targetObject);
 
-            const advice = document.querySelector("#calorieAdvice");
-            advice.textContent = `あなたの目標摂取カロリーは${targetCalorieIntake}kcalです。`;
+            // todo
+            if (targetCalorieIntake <= sharedState.bmr) {
+                const advice = document.querySelector("#calorieAdvice");
+                advice.textContent = "1日の目標摂取カロリーが基礎代謝を下回っています。ダイエット計画を見直してください。";
+            } else {
+                const advice = document.querySelector("#calorieAdvice");
+                advice.textContent = `あなたの1日の目標摂取カロリーは${targetCalorieIntake}kcalです。`;
+                
+                const good = document.createElement("p");
+                good.textContent = "健康的なダイエット計画です。"
+                advice.appendChild(good);
+            }
         } catch (e) {
             alert(e.message);
         }
