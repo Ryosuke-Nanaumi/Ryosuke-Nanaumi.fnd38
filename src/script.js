@@ -12,7 +12,6 @@ export function add(a, b) {
 
 export function setupScreenToggle() {
     const startBtn = document.querySelector(".start-button");
-    console.log(startBtn);
     const measurementBtn = document.querySelector(".measurement-button");
     const nextButton = document.querySelector("#nextButton");
     const startDisplay = document.querySelector("#start-screen");
@@ -25,9 +24,6 @@ export function setupScreenToggle() {
     const sexSelectInput = document.querySelector("#sexSelect")
     const activitySelectInput = document.querySelector("#activitySelect")
 
-    // 表示されていないからnull
-    
-    
     measurementBtn.disabled = true;
     
     startBtn?.addEventListener("click", () => {

@@ -23,5 +23,9 @@ export const screenInput2HTML = `
       <label>達成までの日数<input type="number" id="targetDate" value="100"></label>
     </form>
     <button class="create-button" id="createButton">目標プランを作成する</button>
+  <div id="dietPlanResult" class="result-box">
+      <h3>プラン結果</h3>
+      <div id="calorieAdvice"></div>
+    </div>
   </section>
 `

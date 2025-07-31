@@ -21,9 +21,10 @@ export function calculateTdee(bmr, activityLevel) {
         high: 2.00
     }
 
-    return bmr * activityLevelMap[activityLevel];
+    return parseFloat((bmr * activityLevelMap[activityLevel]).toFixed(1));
 }
 
-export function calculateTarget() {
-
+export function calculateTarget(tdee, targetObject) {
+    const { currentWeight, targetWeightValue, targetDateValue } = targetObject;
+    return parseFloat((tdee - ((currentWeight - targetWeightValue) * 7200) / targetDateValue).toFixed(1));
 }

@@ -1,6 +1,7 @@
-// import { calculateTarget } from "./calculation";
+import { sharedState } from "./sharedState.js";
+import { calculateTarget } from "./calculation.js";
+import { validateTarget } from "./validation.js";
 
-// todo
 export function setupInputScreen2() {
     const targetWeight = document.querySelector("#targetWeight");
     const targetDate = document.querySelector("#targetDate");
@@ -19,6 +20,23 @@ export function setupInputScreen2() {
     });
 
     createButton.addEventListener("click", () => {
-        // const result = calculateTarget()
+        try {
+            const targetWeightValue = targetWeight.value;
+            const targetDateValue = targetDate.value;
+
+            const targetObject = {
+                currentWeight: sharedState.userProfile.weight,
+                targetWeightValue: targetWeightValue,
+                targetDateValue: targetDateValue
+            }
+            validateTarget(targetObject);
+
+            const targetCalorieIntake = calculateTarget(sharedState.tdee, targetObject);
+
+            const advice = document.querySelector("#calorieAdvice");
+            advice.textContent = `あなたの目標摂取カロリーは${targetCalorieIntake}kcalです。`;
+        } catch(e) {
+            alert(e.message);
+        }
     });
 }

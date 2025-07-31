@@ -1,22 +1,29 @@
 // @vitest-environment jsdom
 import { describe, it, beforeEach, expect, vi } from "vitest";
 import { setupInputScreen2 } from "../src/screenInput2";
-import { calculateTarget } from "../src/calculation";
 import { screenInput2HTML } from "./fixtures/initialHTML";
+import { sharedState } from "../src/sharedState.js";
+import { validateTarget } from "../src/validation.js";
 
 vi.mock("../src/calculation.js", () => ({
-    calculateTarget: vi.fn(() => ({
-        dailyCalorieCut: 240,
-        weekleyWorkoutPlan: ["月曜日: ランニング"],
-        recomendFood: ["野菜"],
-        warning: "急激な減量は避けましょう。"
-    }))
+    calculateTarget: vi.fn(() => 1500),
+}));
+
+vi.mock("../src/validation.js", () => ({
+    validateTarget: vi.fn(),
 }));
 
 
 describe("setupInputScreen2", () => {
     beforeEach(() => {
         document.body.innerHTML = screenInput2HTML;
+        sharedState.userProfile = {
+            age: 25,
+            weight: 70,
+            height: 170,
+            sex: "male",
+            activityLevel: "middle",
+        };
         setupInputScreen2();
     });
     it("show content", () => {
@@ -36,7 +43,6 @@ describe("setupInputScreen2", () => {
 
         createButton.click();
 
-        // expect(calculateTarget).toHaveBeenCalled();
-        // expect(calculateTarget).toHaveBeenCalled();
+        expect(document.querySelector("#calorieAdvice").textContent).toBe("あなたの目標摂取カロリーは1500kcalです。")
     })
 })
