@@ -21,7 +21,6 @@ export const screenInput2HTML = `
     <form class="user-information-form-2" id="informationForm2">
       <label>目標体重<input type="number" id="targetWeight" value="50" required ></label>
       <label>達成までの日数<input type="number" id="targetDate" value="100"></label>
-      <label>週の運動可能回数<input type="number" id="possibleActiveDate" value="2"></label>
     </form>
     <button class="create-button" id="createButton">目標プランを作成する</button>
   </section>

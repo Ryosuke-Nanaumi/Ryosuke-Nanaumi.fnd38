@@ -33,6 +33,6 @@ export function validateUserProfile(userProfile) {
 
 /**
  * 目標値設定の入力値が有効かどうか確認し、無効なら例外を投げる
- * @param {Object} target - {targetWeight, targetDate, possibleActiveDate}
+ * @param {Object} target - {targetWeight, targetDate}
  *  */
 export function validateTarget(target) {}

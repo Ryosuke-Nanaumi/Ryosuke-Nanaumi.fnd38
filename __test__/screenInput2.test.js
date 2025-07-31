@@ -22,14 +22,13 @@ describe("setupInputScreen2", () => {
     it("show content", () => {
         expect(document.querySelector("#targetWeight").display).not.toBe("none");
         expect(document.querySelector("#targetDate").display).not.toBe("none");
-        expect(document.querySelector("#possibleActiveDate").display).not.toBe("none");
         expect(document.querySelector("#createButton").display).not.toBe("none");
     });
     it("create and display plan when createButton tapped", () => {
         const createButton = document.querySelector("#createButton")
         expect(createButton.disabled).toBe(true);
 
-        ["targetWeight", "targetDate", "possibleActiveDate"].forEach(id => {
+        ["targetWeight", "targetDate"].forEach(id => {
             document.getElementById(id).dispatchEvent(new Event("input"));
         });
 
