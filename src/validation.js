@@ -14,13 +14,13 @@ const MAX_HEIGHT = 250;
 export function validateUserProfile(userProfile) {
     const { age, weight, height, sex, activityLevel } = userProfile;
 
-    if (!Number.isFinite(age) || age <= MIN_AGE || age > MAX_AGE) {
+    if (!Number.isFinite(age) || age < MIN_AGE || age > MAX_AGE) {
         throw new Error("正しい年齢を入力してください。(1歳以上130歳以下)");
     }
-    if (!Number.isFinite(weight) || weight <= MIN_WEIGHT || weight > MAX_WEIGHT) {
+    if (!Number.isFinite(weight) || weight < MIN_WEIGHT || weight > MAX_WEIGHT) {
         throw new Error("正しい体重を入力してください。(1kg以上300kg以下)");
     }
-    if (!Number.isFinite(height) || height <= MIN_HEIGHT || height > MAX_HEIGHT) {
+    if (!Number.isFinite(height) || height < MIN_HEIGHT || height > MAX_HEIGHT) {
         throw new Error("正しい身長を入力してください。(30cm以上250cm以下)");
     }
     if (sex !== "male" && sex !== "female") {
@@ -37,13 +37,13 @@ export function validateUserProfile(userProfile) {
  *  */
 export function validateTarget(target) {
     const { currentWeight, targetWeightValue, targetDateValue } = target;
-    if (!Number.isFinite(Number(targetWeightValue)) || targetWeightValue <= MIN_WEIGHT || targetWeightValue > MAX_WEIGHT) {
+    if (!Number.isFinite(Number(targetWeightValue)) || targetWeightValue < MIN_WEIGHT || targetWeightValue > MAX_WEIGHT) {
         throw new Error("正しい目標体重を入力してください。(1kg以上300kg以下の範囲で、現在の体重より少ない目標体重を指定してください。)");
     }
     if (currentWeight <= targetWeightValue) {
         throw new Error("現在の体重より少ない目標体重を設定してください。");
     }
     if (!Number.isFinite(Number(targetDateValue)) || targetDateValue <= 0) {
-        throw new Error("正しい目標日を設定してください。(0以上)");
+        throw new Error("正しい目標日を設定してください。(1以上)");
     }
 }
