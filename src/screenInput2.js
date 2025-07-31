@@ -9,6 +9,8 @@ export function setupInputScreen2() {
 
     createButton.disabled = true;
 
+    showUserMetabolismResult();
+
     [targetWeight, targetDate].forEach(input => {
         input.addEventListener("input", () => {
             const isFilled = (
@@ -35,8 +37,42 @@ export function setupInputScreen2() {
 
             const advice = document.querySelector("#calorieAdvice");
             advice.textContent = `あなたの目標摂取カロリーは${targetCalorieIntake}kcalです。`;
-        } catch(e) {
+        } catch (e) {
             alert(e.message);
         }
     });
+}
+
+function showUserMetabolismResult() {
+    const container = document.getElementById("metabolismList");
+    const {
+        userProfile,
+        bmr,
+        tdee,
+    } = sharedState;
+
+    container.innerHTML = `
+    <ul>
+      <li><strong>年齢:</strong> ${userProfile.age} 歳</li>
+      <li><strong>性別:</strong> ${userProfile.sex === "male" ? "男性" : "女性"}</li>
+      <li><strong>身長:</strong> ${userProfile.height} cm</li>
+      <li><strong>体重:</strong> ${userProfile.weight} kg</li>
+      <li><strong>活動レベル:</strong> ${getActivityLevelLabel(userProfile.activityLevel)}</li>
+      <li><strong>基礎代謝 (BMR):</strong> ${bmr} kcal</li>
+      <li><strong>総消費カロリー (TDEE):</strong> ${tdee} kcal</li>
+    </ul>
+  `;
+}
+
+function getActivityLevelLabel(level) {
+    switch (level) {
+        case "low":
+            return "低い（運動しない）";
+        case "middle":
+            return "普通（少し運動する）";
+        case "high":
+            return "高い（運動する）";
+        default:
+            return "不明";
+    }
 }

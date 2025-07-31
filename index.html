@@ -20,19 +20,17 @@
       </ul>
     </div>
   </header>
-  <section id="start-screen" >
+  <section id="start-screen">
     <h2>目標を入力して、筋トレ&食事のプランを自動で提案します</h2>
     <button class="start-button">はじめる</button>
   </section>
   <section id="input-information-screen-1" style="display: none;">
     <h2>代謝を測定しよう</h2>
+    <p>
+      このページでは、<strong>年齢・性別・身長・体重・活動レベル</strong>から
+      あなたの<strong>基礎代謝（BMR）※1</strong>と<strong>1日の総消費カロリー（TDEE）※2</strong>を計算します。
+    </p>
     <div class="measure-metabolic-container">
-      <div id="metabolism-info">
-        <p>
-          <strong>基礎代謝</strong>とは、「何もしていなくても生命維持のために消費されるエネルギー」です。<br>
-          年齢・身長・体重・性別などから計算され、ダイエットや筋トレの計画を立てるうえでの重要な指標となります。
-        </p>
-      </div>
       <div class="user-information-result-conainer">
         <div class="user-information-button-container">
           <div class="user-information">
@@ -95,20 +93,55 @@
           <div id="tdeeResult"></div>
         </div>
       </div>
+      <div class="supliment-description">
+        <ul>
+          <li class="bmr-description">
+            ※1 <strong>基礎代謝</strong>とは、「何もしていなくても生命維持のために消費されるエネルギー」です。
+            年齢・身長・体重・性別などから計算され、ダイエットや筋トレの計画を立てるうえでの重要な指標となります。
+          </li>
+          <li class="tdee-description">
+            ※2 <strong>総消費カロリー（TDEE）</strong>とは、基礎代謝に日常の活動量を加えた、1日に消費する合計カロリーです。
+            食事管理や運動計画を立てる際の目安になります。
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
   <section id="input-information-screen-2" style="display: none;">
     <h2>ダイエットプランを立てましょう</h2>
     <p>基礎代謝と活動量をもとに、あなたの計画が無理のないものか確認します。</p>
-    <form class="user-information-form-2" id="informationForm2">
-      <label>目標体重 (kg)<input type="number" id="targetWeight" required></label>
-      <label>達成までの日数 (日)<input type="number" id="targetDate"></label>
-    </form>
-    <button class="create-button" id="createButton">プランを作成する</button>
-    <div id="dietPlanResult" class="result-box">
-      <h3>プラン結果</h3>
-      <p id="resultMessage">ここに結果が表示されます</p>
-      <div id="calorieAdvice"></div>
+    <div class="data-target-container">
+      <div id="userMetabolismResult" class="result-box">
+        <h3>あなたの現在のデータ</h3>
+        <div id="metabolismList">
+        </div>
+      </div>
+      <div class="form-result-row-container">
+        <div class="user-target-button-container">
+          <form class="user-information-form-2" id="informationForm2">
+            <label class="target-weight-label">
+              <div class="label-header">
+                <span class="form-label-required">必須</span>
+                <span>目標体重 (kg)</span>
+              </div>
+              <input type="number" class="form-item-input" id="targetWeight" placeholder="(例) 75" required>
+            </label>
+            <label class="target-date-label">
+              <div class="label-header">
+                <span class="form-label-required">必須</span>
+                <span>達成までの日数 (日)</span>
+              </div>
+              <input type="number" class="form-item-input" id="targetDate" placeholder="(例) 100" required>
+            </label>
+          </form>
+          <button class="create-button" id="createButton">プランを作成する</button>
+        </div>
+        <div id="dietPlanResult" class="result-box">
+          <h3>プラン結果</h3>
+          <p id="resultMessage">ここに結果が表示されます</p>
+          <div id="calorieAdvice"></div>
+        </div>
+      </div>
     </div>
   </section>
 

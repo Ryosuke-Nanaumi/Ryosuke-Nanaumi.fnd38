@@ -64,16 +64,13 @@ li {
     font-size: 36px;
 }
 
-#metabolism-info p {
-    font-size: 15px;
-}
-
 .measure-metabolic-container {
     width: 80%;
     align-self: center;
 }
 
-.information-form-1 {
+.information-form-1,
+.user-information-form-2 {
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -137,7 +134,7 @@ li {
     height: 30px;
     /* flex: 1; */
     width: 100%;
-    max-width: 100px;
+    max-width: 130px;
     font-size: 18px;
 }
 
@@ -197,7 +194,7 @@ li {
     box-shadow: rgba(0, 0, 0, 0.2);
 }
 
-.user-information-button-container  {
+.user-information-button-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -217,9 +214,101 @@ li {
 }
 
 .result-box {
-  flex: 1;
-  min-width: 250px;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  padding: 20px;
+    flex: 1;
+    min-width: 250px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.supliment-description ul {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 3ページ目 */
+
+.data-target-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#userMetabolismResult {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+#userMetabolismResult h3 {
+    margin-bottom: 12px;
+}
+
+#metabolismList ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#metabolismList li {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.user-target-button-container {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+}
+
+.form-result-row-container {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+#input-information-screen-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 35px;
+    gap: 20px;
+}
+
+.user-information-form-2 {
+    width: 80%;
+    align-self: center;
+}
+
+.target-weight-label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 15px;
+    max-width: 140px;
+}
+
+.create-button {
+    margin-top: 30px;
+    display: inline-block;
+    background-color: #42F099;
+    border-radius: 24px;
+    border-style: none;
+    padding: 10px 30px;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.create-button:hover:not(:disabled) {
+    background-color: #11d070;
+    cursor: pointer;
+}
+
+.create-button:active:not(:disabled) {
+    background-color: #2fb67b;
+    box-shadow: rgba(0, 0, 0, 0.2);
 }

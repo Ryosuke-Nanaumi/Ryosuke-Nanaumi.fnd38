@@ -66,6 +66,7 @@ export function setupScreenToggle() {
     nextButton?.addEventListener("click", () => {
         inputInformationScreen1.style.display = "none";
         inputInformationScreen2.style.display = "flex";
+        setupInputScreen2();
     })
 
     function checkInputs() {
@@ -82,5 +83,4 @@ export function setupScreenToggle() {
 
 document.addEventListener('DOMContentLoaded', () => {
     setupScreenToggle();
-    setupInputScreen2();
 });
