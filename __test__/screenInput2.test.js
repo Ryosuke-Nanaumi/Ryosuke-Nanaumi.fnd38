@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { describe, it, beforeEach, expect, vi } from "vitest";
-import { setupInputScreen2 } from "../src/screenInput2";
 import { screenInput2HTML } from "./fixtures/initialHTML";
+import { setupInputScreen2 } from "../src/screenInput2";
 import { sharedState } from "../src/sharedState.js";
 import { validateTarget } from "../src/validation.js";
 
@@ -24,6 +24,9 @@ describe("setupInputScreen2", () => {
             sex: "male",
             activityLevel: "middle",
         };
+        sharedState.bmr = 1400;
+        sharedState.tdee = 2000;
+
         setupInputScreen2();
     });
     it("show content", () => {
@@ -43,6 +46,6 @@ describe("setupInputScreen2", () => {
 
         createButton.click();
 
-        expect(document.querySelector("#calorieAdvice").textContent).toBe("あなたの目標摂取カロリーは1500kcalです。")
+        expect(document.querySelector("#calorieAdvice").textContent).toBe("あなたの1日の目標摂取カロリーは1500kcalです。健康的なダイエット計画です。")
     })
 })

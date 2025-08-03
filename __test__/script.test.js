@@ -49,6 +49,10 @@ vi.mock("../src/calculation", () => ({
   calculateTdee: vi.fn(() => 2000),
 }))
 
+vi.mock("../src/screenInput2", () => ({
+  setupInputScreen2: vi.fn(),
+}));
+
 describe("screenSwitch", () => {
   beforeEach(() => {
     document.body.innerHTML = fullScreenFlowHTML;

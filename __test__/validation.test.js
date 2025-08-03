@@ -44,7 +44,7 @@ describe("validation", () => {
         it("validate targetDateValue", () => {
             expect(() => {
                 validate.validateTarget({ currentWeight: 50, targetWeightValue: 40, targetDateValue: -1 });
-            }).toThrow("正しい目標日を設定してください。(0以上)");
+            }).toThrow("正しい目標日を設定してください。(1以上)");
         });
     });
 });

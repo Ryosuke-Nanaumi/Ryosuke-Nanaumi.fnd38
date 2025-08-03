@@ -18,11 +18,14 @@ export const fullScreenFlowHTML = `
 export const screenInput2HTML = `
 <section id="input-information-screen-2">
     <h2>目標を設定しましょう</h2>
+    <div id="userMetabolismResult" class="result-box">
+      <div id="metabolismList"></div>
+    </div>
     <form class="user-information-form-2" id="informationForm2">
       <label>目標体重<input type="number" id="targetWeight" value="50" required ></label>
       <label>達成までの日数<input type="number" id="targetDate" value="100"></label>
     </form>
-    <button class="create-button" id="createButton">目標プランを作成する</button>
+    <button class="create-button" id="createButton">プランを作成する</button>
   <div id="dietPlanResult" class="result-box">
       <h3>プラン結果</h3>
       <div id="calorieAdvice"></div>
